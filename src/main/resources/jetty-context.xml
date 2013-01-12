@@ -8,36 +8,44 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <beans>
-        <bean id="Server" class="org.eclipse.jetty.server.Server" init-method="start" destroy-method="stop">
+    <bean id="Server" class="org.eclipse.jetty.server.Server" init-method="start" destroy-method="stop">
 
-            <property name="connectors">
-                <list>
-                    <bean id="Connector" class="org.eclipse.jetty.server.nio.NetworkTrafficSelectChannelConnector">
-                        <property name="port" value="8080" />
-                    </bean>
-                </list>
-            </property>
-
-            <property name="handler">
-                <bean id="handlers" class="org.eclipse.jetty.server.handler.HandlerList">
-                    <property name="handlers">
-                        <list>
-                            <bean class="org.eclipse.jetty.server.handler.ResourceHandler">
-                                <property name="directoriesListed" value="false"/>
-                                <property name="welcomeFiles">
-                                    <list>
-                                        <value>index.html</value>
-                                    </list>
-                                </property>
-                                <property name="resourceBase" value="html"/>
-                            </bean>
-                            <bean class="org.eclipse.jetty.server.handler.DefaultHandler"/>
-                        </list>
-                    </property>
+        <property name="connectors">
+            <list>
+                <bean id="Connector" class="org.eclipse.jetty.server.nio.NetworkTrafficSelectChannelConnector">
+                    <property name="port" value="8080"/>
                 </bean>
-            </property>
-        </bean>
-    </beans>
+            </list>
+        </property>
+
+        <property name="handler">
+            <bean id="handlers" class="org.eclipse.jetty.server.handler.HandlerList">
+                <property name="handlers">
+                    <list>
+                        <bean class="org.eclipse.jetty.server.handler.ResourceHandler">
+                            <property name="directoriesListed" value="false"/>
+                            <property name="welcomeFiles">
+                                <list>
+                                    <value>index.html</value>
+                                </list>
+                            </property>
+                            <property name="handler" ref="WebApp" />
+                        </bean>
+                        <bean class="org.eclipse.jetty.server.handler.DefaultHandler"/>
+                    </list>
+                </property>
+            </bean>
+        </property>
+
+    </bean>
+
+    <bean id="WebApp" class="org.eclipse.jetty.webapp.WebAppContext">
+        <property name="descriptor" value="src/main/resources/web.xml"/>
+        <property name="resourceBase" value="html" />
+        <!--
+        <property name="contextPath" value="/cloudnine" />
+        -->
+        <property name="logUrlOnStart" value="true" />
+    </bean>
 
 </beans>
