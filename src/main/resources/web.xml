@@ -28,4 +28,14 @@
         <url-pattern>controllers/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>WebSocket</servlet-name>
+        <servlet-class>com.cl9p.websocket.servlet.ChatWebSocketServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>WebSocket</servlet-name>
+        <url-pattern>websocket/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>

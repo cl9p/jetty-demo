@@ -101,6 +101,11 @@
             <artifactId>jetty-servlets</artifactId>
             <version>${jetty.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-websocket</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
 
         <!-- JSP and JSTL SUPPORT -->
         <dependency>
@@ -113,6 +118,11 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-websocket</artifactId>
+            <version>8.1.8.v20121106</version>
         </dependency>
     </dependencies>
 
