@@ -13,7 +13,8 @@
         <property name="connectors">
             <list>
                 <bean id="Connector" class="org.eclipse.jetty.server.nio.NetworkTrafficSelectChannelConnector">
-                    <property name="port" value="8080"/>
+                    <constructor-arg name="server" ref="Server" />
+                    <property name="port" value="8080" />
                 </bean>
             </list>
         </property>
@@ -47,5 +48,7 @@
         -->
         <property name="logUrlOnStart" value="true" />
     </bean>
+
+    <import resource="hazelcast-context.xml" />
 
 </beans>

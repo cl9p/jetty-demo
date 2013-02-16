@@ -53,7 +53,7 @@ public class JettyRunner implements Runnable{
         app.loadSpringContainer();
         logger.info("instance " + app.hashCode() +
                 " init " + args.length);
-        int port = 1200;
+        int port = 1201;
         for (int i = 0; i < args.length; i++) {
             logger.info("arg " + i +
                     " = " + args[i]);
