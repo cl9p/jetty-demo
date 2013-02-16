@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-public class ChatWebSocketServlet extends WebSocketServlet {
+public class ChatWebSocketServlet extends ChatWebSocketServlet {
     private static final long serialVersionUID = -987612345L;
     public static String newLine = System.getProperty("line.separator");
     private final Set<ChatSocket> _members = new CopyOnWriteArraySet<ChatSocket>();

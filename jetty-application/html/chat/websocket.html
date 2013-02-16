@@ -21,7 +21,7 @@
         var server = {
             connect : function() {
                 var location = document.location.toString().replace('http://',
-                        'ws://').replace('https://', 'wss://').replace('websocket.html','websocket/chat');
+                        'ws://').replace('https://', 'wss://').replace('/socket/websocket.html','/websocket/chat');
                 alert(location);
                 this._ws = new WebSocket(location);
                 this._ws.onopen = this._onopen;
