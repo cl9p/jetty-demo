@@ -14,6 +14,7 @@
             <property name="connectors">
                 <list>
                     <bean id="Connector" class="org.eclipse.jetty.server.nio.NetworkTrafficSelectChannelConnector">
+                        <constructor-arg name="server" ref="Server" />
                         <property name="port" value="8080" />
                     </bean>
                 </list>
@@ -24,20 +25,21 @@
                     <property name="handlers">
                         <list>
                             <bean class="org.eclipse.jetty.server.handler.ResourceHandler">
-                                <property name="directoriesListed" value="false"/>
+                                <property name="resourceBase" value="html" />
                                 <property name="welcomeFiles">
                                     <list>
                                         <value>index.html</value>
                                     </list>
                                 </property>
-                                <property name="resourceBase" value="html"/>
                             </bean>
                             <bean class="org.eclipse.jetty.server.handler.DefaultHandler"/>
                         </list>
                     </property>
                 </bean>
             </property>
+
         </bean>
+
     </beans>
 
 </beans>

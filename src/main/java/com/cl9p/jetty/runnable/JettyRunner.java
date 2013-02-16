@@ -12,18 +12,18 @@ import java.util.Date;
 import java.util.Enumeration;
 import java.util.Vector;
 
-public class JettyLoader implements Runnable{
+public class JettyRunner implements Runnable{
 
     private ServerSocket server = null;
     private Thread thread = null;
     private volatile boolean stopping = false;
     private String directory = null;
     private final Vector handlers;
-    private static Logger logger = Logger.getLogger(JettyLoader.class);
+    private static Logger logger = Logger.getLogger(JettyRunner.class);
 
     public static native void toto();
 
-    public JettyLoader() {
+    public JettyRunner() {
         super();
         logger.info("instance " + this.hashCode() +
                 " created");
@@ -49,7 +49,7 @@ public class JettyLoader implements Runnable{
      */
 
     public static void main(String[] args) throws Exception {
-        JettyLoader app = new JettyLoader();
+        JettyRunner app = new JettyRunner();
         app.loadSpringContainer();
         logger.info("instance " + app.hashCode() +
                 " init " + args.length);
@@ -146,9 +146,9 @@ public class JettyLoader implements Runnable{
     }
 
     public static class ShutdownHook extends Thread {
-        private final JettyLoader instance;
+        private final JettyRunner instance;
 
-        public ShutdownHook(JettyLoader instance) {
+        public ShutdownHook(JettyRunner instance) {
             this.instance = instance;
         }
 
@@ -164,12 +164,12 @@ public class JettyLoader implements Runnable{
 
     public static class Handler implements Runnable {
 
-        private final JettyLoader parent;
+        private final JettyRunner parent;
         private String directory = null; // Only set before thread is started
         private final Socket socket;
         private int number = 0; // Only set before thread is started
 
-        public Handler(Socket s, JettyLoader p) {
+        public Handler(Socket s, JettyRunner p) {
             super();
             this.socket = s;
             this.parent = p;
