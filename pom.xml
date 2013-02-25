@@ -11,6 +11,7 @@
     <properties>
         <jetty.version>9.0.0.M5</jetty.version>
         <spring.version>3.2.0.RELEASE</spring.version>
+        <spring-data-gemfire.version>1.1.1.RELEASE</spring-data-gemfire.version>
         <apache.commons.daemon.version>1.0.10</apache.commons.daemon.version>
         <slf4j.version>1.7.2</slf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -29,6 +30,18 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-gemfire</artifactId>
+            <version>${spring-data-gemfire.version}</version>
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.gemstone.gemfire</groupId>
+                    <artifactId>gemfire</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
